@@ -3,6 +3,7 @@
   "displayName": "pd-remote-vscode",
   "description": "",
   "version": "0.0.1",
+  "repository": "github:barisssss/pdRemoteVscode",
   "engines": {
     "vscode": "^1.75.0"
   },
