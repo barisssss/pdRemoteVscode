@@ -2,7 +2,7 @@
   "name": "pd-remote-vscode",
   "displayName": "pd-remote-vscode",
   "description": "pd-remote for VS Code",
-  "version": "0.0.1",
+  "version": "v0.0.1-alpha",
   "homepage": "https://github.com/barisssss/pdRemoteVscode",
   "repository": "github:barisssss/pdRemoteVscode",
   "author": {
