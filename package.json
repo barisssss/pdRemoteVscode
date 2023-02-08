@@ -1,9 +1,14 @@
 {
   "name": "pd-remote-vscode",
   "displayName": "pd-remote-vscode",
-  "description": "",
+  "description": "pd-remote for VS Code",
   "version": "0.0.1",
+  "homepage": "https://github.com/barisssss/pdRemoteVscode",
   "repository": "github:barisssss/pdRemoteVscode",
+  "author": {
+    "name": "Baris Altun",
+    "email": "barisaltun96@gmail.com"
+  },
   "engines": {
     "vscode": "^1.75.0"
   },

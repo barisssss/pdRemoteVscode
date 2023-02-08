@@ -36,7 +36,7 @@ function sendPdsendMessage(pdsendPath: string, message: string) {
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	const pdsendPath = path.join(context.extensionPath, 'src/pdsend');
+	const pdsendPath = path.join(context.extensionPath, 'res/pdsend');
 
 	let startProcess = vscode.commands.registerCommand('pd-remote-vscode.createPdSendProcess', () => {
 		createPdSendProcess(pdsendPath);
