@@ -1,0 +1,104 @@
+{
+  "name": "pd-remote-vscode",
+  "displayName": "pd-remote-vscode",
+  "description": "",
+  "version": "0.0.1",
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "keybindings": [
+      {
+        "command": "pd-remote-vscode.sendMessage",
+        "key": "ctrl+c ctrl+m"
+      },
+      {
+        "command": "pd-remote-vscode.sendCompile",
+        "key": "ctrl+c ctrl+k"
+      },
+      {
+        "command": "pd-remote-vscode.sendStart",
+        "key": "ctrl+c ctrl+s"
+      },
+      {
+        "command": "pd-remote-vscode.sendStop",
+        "key": "ctrl+c ctrl+t"
+      },
+      {
+        "command": "pd-remote-vscode.sendRestart",
+        "key": "ctrl+c ctrl+g"
+      },
+      {
+        "command": "pd-remote-vscode.sendDspOn",
+        "key": "ctrl+/"
+      },
+      {
+        "command": "pd-remote-vscode.sendDspOff",
+        "key": "ctrl+."
+      }
+    ],
+    "commands": [
+      {
+        "command": "pd-remote-vscode.createPdSendProcess",
+        "title": "Pd-Remote: Create pdsend Process"
+      },
+      {
+        "command": "pd-remote-vscode.killPdSendProcess",
+        "title": "Pd-Remote: Kill pdsend Process"
+      },
+      {
+        "command": "pd-remote-vscode.sendMessage",
+        "title": "Pd-Remote: Send Message"
+      },
+      {
+        "command": "pd-remote-vscode.sendDspOn",
+        "title": "Pd-Remote: Send DSP On"
+      },
+      {
+        "command": "pd-remote-vscode.sendDspOff",
+        "title": "Pd-Remote: Send DSP Off"
+      },
+      {
+        "command": "pd-remote-vscode.sendCompile",
+        "title": "Pd-Remote: Send Compile"
+      },
+      {
+        "command": "pd-remote-vscode.sendStart",
+        "title": "Pd-Remote: Send Start"
+      },
+      {
+        "command": "pd-remote-vscode.sendStop",
+        "title": "Pd-Remote: Send Stop"
+      },
+      {
+        "command": "pd-remote-vscode.sendRestart",
+        "title": "Pd-Remote: Send Restart"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.75.0",
+    "@types/glob": "^8.0.1",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.49.0",
+    "@typescript-eslint/parser": "^5.49.0",
+    "eslint": "^8.33.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.1.0",
+    "typescript": "^4.9.4",
+    "@vscode/test-electron": "^2.2.2"
+  }
+}
