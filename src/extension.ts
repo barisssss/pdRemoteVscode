@@ -3,18 +3,16 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-const port = 4711;
-const host = 'localhost';
-const protocol = 'udp';
-
-function createPdSendProcess(pdsendPath: string) {
+function createPdSendProcess(pdsendPath: string, port = 4711, host = 'localhost', protocol = 'udp') {
 	const terminal = vscode.window.createTerminal('PdSend');
 	terminal.sendText(`${pdsendPath} ${port} ${host} ${protocol}`);
+	vscode.window.showInformationMessage(`Started pdsend process on Port ${port}`);
 }
 
 function killPdSendProcess() {
 	const terminal = getRunningTerminal();
 	terminal?.dispose();
+	vscode.window.showInformationMessage(`Killed pdsend process`);
 }
 
 function getRunningTerminal() {
@@ -40,16 +38,12 @@ export function activate(context: vscode.ExtensionContext) {
 
 	let startProcess = vscode.commands.registerCommand('pd-remote-vscode.createPdSendProcess', () => {
 		createPdSendProcess(pdsendPath);
-
-		vscode.window.showInformationMessage(`Started pdsend process on Port ${port}`);
 	});
 
 	context.subscriptions.push(startProcess);
 
 	let killProcess = vscode.commands.registerCommand('pd-remote-vscode.killPdSendProcess', () => {
 		killPdSendProcess();
-
-		vscode.window.showInformationMessage(`Killed pdsend process`);
 	});
 
 	context.subscriptions.push(killProcess);
