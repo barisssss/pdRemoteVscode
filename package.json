@@ -84,7 +84,28 @@
         "command": "pd-remote-vscode.sendRestart",
         "title": "Pd-Remote: Send Restart"
       }
-    ]
+    ],
+    "configuration":{
+      "title": "Pd-Remote",
+      "properties": {
+        "pd-remote-vscode.port": {
+          "type": "number",
+          "default": 4711,
+          "description": "Defines the port you want to communicate on"
+        },
+        "pd-remote-vscode.hostname": {
+          "type": "string",
+          "default": "localhost",
+          "description": "Defines the host you want to communicate on"
+        },
+        "pd-remote-vscode.protocol": {
+          "type": "string",
+          "default": "udp",
+          "enum": ["udp", "tcp"],
+          "description": "Defines the protocol you want to communicate over"
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "npm run compile",

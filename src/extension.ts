@@ -3,7 +3,11 @@
 import * as vscode from 'vscode';
 import * as path from 'path';
 
-function createPdSendProcess(pdsendPath: string, port = 4711, host = 'localhost', protocol = 'udp') {
+function createPdSendProcess(pdsendPath: string) {
+	const port = vscode.workspace.getConfiguration('pd-remote-vscode').get('port');
+	const host = vscode.workspace.getConfiguration('pd-remote-vscode').get('hostname');
+	const protocol = vscode.workspace.getConfiguration('pd-remote-vscode').get('protocol');
+
 	const terminal = vscode.window.createTerminal('PdSend');
 	terminal.sendText(`${pdsendPath} ${port} ${host} ${protocol}`);
 	vscode.window.showInformationMessage(`Started pdsend process on Port ${port}`);
