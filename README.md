@@ -18,7 +18,7 @@ This extension aims to mirror the features of Albert Graefs Emacs-based [Pd-Remo
 4. Select your previously packaged or downloaded .vsix file
 
 ### b) Through the CLI
-1. Make sure you have isntalled VS Code in PATH (see: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+1. Make sure you have installed VS Code in PATH (see: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
 2. Run 
 ```code --install-extension [extension-name].vsix```
 
