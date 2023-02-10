@@ -1,8 +1,8 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 import * as path from 'path';
 
+// this function creates a new terminal and starts the pdsend process
+// it takes the path to the pdsend executable as an argument
 function createPdSendProcess(pdsendPath: string) {
 	const port = vscode.workspace.getConfiguration('pd-remote-vscode').get('port');
 	const host = vscode.workspace.getConfiguration('pd-remote-vscode').get('hostname');
@@ -13,16 +13,20 @@ function createPdSendProcess(pdsendPath: string) {
 	vscode.window.showInformationMessage(`Started pdsend process on Port ${port}`);
 }
 
+// this function kills the pdsend process
 function killPdSendProcess() {
 	const terminal = getRunningTerminal();
 	terminal?.dispose();
 	vscode.window.showInformationMessage(`Killed pdsend process`);
 }
 
+// this function returns the terminal with the name "PdSend"
 function getRunningTerminal() {
 	return vscode.window.terminals.filter((terminal) => terminal.name === "PdSend")[0];
 }
 
+// this function sends a message to the pdsend process
+// it takes the path to the pdsend executable as an argument as well as the message to send
 function sendPdsendMessage(pdsendPath: string, message: string) {
 	const terminal = getRunningTerminal();
 
