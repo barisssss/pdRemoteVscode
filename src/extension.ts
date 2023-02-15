@@ -1,5 +1,8 @@
 import * as vscode from 'vscode';
-import * as path from 'path';
+
+// TODO add a MAKEFILE
+
+let pdSendTerminal: vscode.Terminal | undefined = undefined;
 
 // this function creates a new terminal and starts the pdsend process
 // it takes the path to the pdsend executable as an argument
@@ -8,33 +11,32 @@ function createPdSendProcess(pdsendPath: string) {
 	const host = vscode.workspace.getConfiguration('pd-remote-vscode').get('hostname');
 	const protocol = vscode.workspace.getConfiguration('pd-remote-vscode').get('protocol');
 
-	const terminal = vscode.window.createTerminal('PdSend');
-	terminal.sendText(`${pdsendPath} ${port} ${host} ${protocol}`);
-	vscode.window.showInformationMessage(`Started pdsend process on Port ${port}`);
+	if (!pdSendTerminal || pdSendTerminal.exitStatus !== undefined) {
+		pdSendTerminal = vscode.window.createTerminal('PdSend');
+		pdSendTerminal.sendText(`${pdsendPath} ${port} ${host} ${protocol}`);
+		vscode.window.showInformationMessage(`Started pdsend process on Port ${port}`);
+	}
+	pdSendTerminal.show();
 }
 
 // this function kills the pdsend process
 function killPdSendProcess() {
-	const terminal = getRunningTerminal();
-	terminal?.dispose();
+	pdSendTerminal?.dispose();
 	vscode.window.showInformationMessage(`Killed pdsend process`);
 }
 
-// this function returns the terminal with the name "PdSend"
-function getRunningTerminal() {
-	return vscode.window.terminals.filter((terminal) => terminal.name === "PdSend")[0];
-}
 
 // this function sends a message to the pdsend process
 // it takes the path to the pdsend executable as an argument as well as the message to send
 function sendPdsendMessage(pdsendPath: string, message: string) {
-	const terminal = getRunningTerminal();
-
-	if (!terminal) {
+	console.log(pdSendTerminal?.exitStatus);
+	if (!pdSendTerminal || pdSendTerminal.exitStatus !== undefined) {
+		console.log("No terminal found, creating new one");
 		createPdSendProcess(pdsendPath);
 		sendPdsendMessage(pdsendPath, message);
 	} else {
-		terminal.sendText(message);
+		console.log(`Sending message ${message}`);
+		pdSendTerminal?.sendText(message);
 		vscode.window.showInformationMessage(`Pd-Remote: Message '${message}' sent.`);
 	}
 }
@@ -42,7 +44,9 @@ function sendPdsendMessage(pdsendPath: string, message: string) {
 // This method is called when your extension is activated
 // Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
-	const pdsendPath = path.join(context.extensionPath, 'res/pdsend');
+	const pdsendPath = vscode.workspace.getConfiguration('pd-remote-vscode').get('pdsendPath', '') || 'pdsend';
+	// currently not used
+	const pdreceivePath = vscode.workspace.getConfiguration('pd-remote-vscode').get('pdreceivePath', '') || 'pdreceive';
 
 	let startProcess = vscode.commands.registerCommand('pd-remote-vscode.createPdSendProcess', () => {
 		createPdSendProcess(pdsendPath);

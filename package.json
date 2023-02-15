@@ -89,6 +89,16 @@
     "configuration":{
       "title": "Pd-Remote",
       "properties": {
+        "pd-remote-vscode.pdsendPath": {
+          "type": "string",
+          "default": "",
+          "description": "Defines the path to the pdsend executable. Leave empty if it is in your PATH."
+        },
+        "pd-remote-vscode.pdreceivePath": {
+          "type": "string",
+          "default": "",
+          "description": "Defines the path to the pdreceive executable. Leave empty if it is in your PATH."
+        },
         "pd-remote-vscode.port": {
           "type": "number",
           "default": 4711,
