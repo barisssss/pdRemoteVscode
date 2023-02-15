@@ -1,7 +1,5 @@
 import * as vscode from 'vscode';
 
-// TODO add a MAKEFILE
-
 let pdSendTerminal: vscode.Terminal | undefined = undefined;
 
 // this function creates a new terminal and starts the pdsend process
