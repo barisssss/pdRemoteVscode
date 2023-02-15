@@ -1,6 +1,6 @@
 # pd-remote-vscode README
 
-This extension aims to mirror the features of Albert Graefs Emacs-based [Pd-Remote](https://github.com/agraef/pd-remote) as a Visual Studio Code Extension. 
+This extension aims to mirror the features of Albert Graefs Emacs-based [Pd-Remote](https://github.com/agraef/pd-remote) as a Visual Studio Code Extension.
 
 ## Packaging the extension
 
@@ -12,14 +12,16 @@ This extension aims to mirror the features of Albert Graefs Emacs-based [Pd-Remo
 ## Installing the extension
 
 ### a) Through the GUI
+
 1. Go to the Extensions Tab in VS Codes Sidebar
 2. Click the "..." symbol at the top of the Extensions Window
 3. Select "Install from VSIX"
 4. Select your previously packaged or downloaded .vsix file
 
 ### b) Through the CLI
-1. Make sure you have installed VS Code in PATH (see: https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
-2. Run 
+
+1. [Make sure you have installed VS Code in PATH](https://code.visualstudio.com/docs/setup/mac#_launching-from-the-command-line)
+2. Run
 ```code --install-extension [extension-name].vsix```
 
 ## Usage
@@ -28,6 +30,7 @@ You may use the [examples in Albert Graefs Repository](https://github.com/agraef
 The default connection is opened on localhost:4711 over UDP. You may change these values in VSCodes workspace or user settings.
 
 ### Supported Commands
+
 Following Commands are supported as of now. You may invoke them either by searching for them in VSCodes Command Prompt (```cmd+Shift+P```) or by using the Keybindings (which can be changed in VSCodes Keybinding Settings).
 
 | Command Prompt Name              | Default Keybinding | Message Sent |
