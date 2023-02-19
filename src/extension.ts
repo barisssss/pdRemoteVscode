@@ -1,4 +1,5 @@
 import * as vscode from 'vscode';
+import * as path from 'path';
 
 let pdSendTerminal: vscode.Terminal | undefined = undefined;
 
@@ -37,6 +38,22 @@ function sendPdsendMessage(pdsendPath: string, message: string) {
 		pdSendTerminal?.sendText(message);
 		vscode.window.showInformationMessage(`Pd-Remote: Message '${message}' sent.`);
 	}
+}
+
+// send a compile message -- check the extension of the filename being edited
+function sendPdsendCompile(pdsendPath: string) {
+    var editor = vscode.window.activeTextEditor;
+    var ext;
+    if (editor) {
+	var fname = editor.document.fileName;
+	ext = path.extname(fname);
+    }
+    if (ext == ".dsp")
+	sendPdsendMessage(pdsendPath, 'faustgen2~ compile');
+    else if (ext == ".lua" || ext == ".pd_lua")
+	sendPdsendMessage(pdsendPath, 'pdluax reload');
+    else
+	vscode.window.showWarningMessage(`Pd-Remote: Don't know how to compile '${ext}' files.`);
 }
 
 // This method is called when your extension is activated
@@ -84,7 +101,7 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(sendDspOff);
 
 	let sendCompile = vscode.commands.registerCommand('pd-remote-vscode.sendCompile', () => {
-		sendPdsendMessage(pdsendPath, 'faustgen2~ compile');
+		sendPdsendCompile(pdsendPath);
 	});
 
 	context.subscriptions.push(sendCompile);
