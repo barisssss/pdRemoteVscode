@@ -1,14 +1,18 @@
 # pd-remote-vscode README
 
-This extension aims to mirror the features of Albert Graefs Emacs-based [Pd-Remote](https://github.com/agraef/pd-remote) as a Visual Studio Code Extension.
+This extension aims to mirror the features of Albert Gräf's Emacs-based [Pd-Remote](https://github.com/agraef/pd-remote) as a Visual Studio Code Extension.
+
+## Pre-requisites
+
+The @vscode/vsce module needs to be installed globally, or nothing will work. To these ends, run `sudo make install-vsce` OR `sudo npm install -g @vscode/vsce` once.
 
 ## Packaging the extension
 
-### Run `make build` OR
+### Run `make` OR
 
-1. Install VS Codes extension manager vsce from npm  
-```npm install -g @vscode/vsce```
-2. In the repositorys root directory, run  
+1. To install requisite modules using npm, run  
+```npm install```
+2. To package the extension, run  
 ```vsce package```
 
 ## Installing the extension
@@ -30,7 +34,7 @@ This extension aims to mirror the features of Albert Graefs Emacs-based [Pd-Remo
 
 ## Usage
 
-You may use the [examples in Albert Graefs Repository](https://github.com/agraef/pd-remote/tree/main/examples) to test the extension.
+You may use the [examples in Albert Gräf's Repository](https://github.com/agraef/pd-remote/tree/main/examples) to test the extension.
 The default connection is opened on localhost:4711 over UDP. You may change these values in VSCodes workspace or user settings.
 
 ### Supported Commands
