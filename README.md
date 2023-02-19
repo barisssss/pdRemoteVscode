@@ -50,5 +50,5 @@ Following Commands are supported as of now. You may invoke them either by search
 | Pd-Remote: Send Restart          | ctrl+c ctrl+g      | Restart (sends `play 0,` then `play 1`) |
 | Pd-Remote: Send DSP On           | ctrl+/             | DSP on (`pd dsp 1`) |
 | Pd-Remote: Send DSP Off          | ctrl+.             | DSP off (`pd dsp 0`) |
-| Pd-Remote: Send Compile          | ctrl+c ctrl+k      | Sends a Faust Compile message (`faustgen2~ compile`) |
+| Pd-Remote: Send Compile          | ctrl+c ctrl+k      | Sends a Compile message (`faustgen2~ compile` or `pdluax reload`, depending on file type) |
 | Pd-Remote: Send Message          | ctrl+c ctrl+m      | Prompts for a message to send to Pd |
