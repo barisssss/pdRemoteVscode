@@ -47,7 +47,7 @@ Following Commands are supported as of now. You may invoke them either by search
 | Pd-Remote: Kill pdsend Process   |                    | Kills the pdsend process |
 | Pd-Remote: Send Start            | ctrl+c ctrl+s      | Start (sends a `play 1` message) |
 | Pd-Remote: Send Stop             | ctrl+c ctrl+t      | Stop (sends a `play 0` message) |
-| Pd-Remote: Send Restart          | ctrl+c ctrl+g      | Restart (sends `play 0,` then `play 1`) |
+| Pd-Remote: Send Restart          | ctrl+c ctrl+r      | Restart (sends `play 0,` then `play 1`) |
 | Pd-Remote: Send DSP On           | ctrl+/             | DSP on (`pd dsp 1`) |
 | Pd-Remote: Send DSP Off          | ctrl+.             | DSP off (`pd dsp 0`) |
 | Pd-Remote: Send Compile          | ctrl+c ctrl+k      | Sends a Compile message (`faustgen2~ compile` or `pdluax reload`, depending on file type) |

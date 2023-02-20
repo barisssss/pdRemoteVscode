@@ -37,7 +37,7 @@
       },
       {
         "command": "pd-remote-vscode.sendRestart",
-        "key": "ctrl+c ctrl+g"
+        "key": "ctrl+c ctrl+r"
       },
       {
         "command": "pd-remote-vscode.sendDspOn",
