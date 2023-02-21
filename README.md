@@ -1,5 +1,7 @@
 # pd-remote-vscode README
 
+![Visual Studio Marketplace Version](https://img.shields.io/visual-studio-marketplace/v/barisssss.pd-remote-vscode.svg?style=flat-square)
+
 This extension aims to mirror the features of Albert Gräf's Emacs-based [Pd-Remote](https://github.com/agraef/pd-remote) as a Visual Studio Code Extension.
 
 ## Pre-requisites
