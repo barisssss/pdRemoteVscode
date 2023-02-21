@@ -42,18 +42,21 @@ function sendPdsendMessage(pdsendPath: string, message: string) {
 
 // send a compile message -- check the extension of the filename being edited
 function sendPdsendCompile(pdsendPath: string) {
-    var editor = vscode.window.activeTextEditor;
-    var ext;
-    if (editor) {
-	var fname = editor.document.fileName;
-	ext = path.extname(fname);
-    }
-    if (ext == ".dsp")
-	sendPdsendMessage(pdsendPath, 'faustgen2~ compile');
-    else if (ext == ".lua" || ext == ".pd_lua")
-	sendPdsendMessage(pdsendPath, 'pdluax reload');
-    else
-	vscode.window.showWarningMessage(`Pd-Remote: Don't know how to compile '${ext}' files.`);
+	const editor = vscode.window.activeTextEditor;
+	let ext;
+
+	if (editor) {
+		const fname = editor.document.fileName;
+		ext = path.extname(fname);
+	}
+
+	if (ext === ".dsp") {
+		sendPdsendMessage(pdsendPath, 'faustgen2~ compile');
+	} else if (ext === ".lua" || ext === ".pd_lua") {
+		sendPdsendMessage(pdsendPath, 'pdluax reload');
+	} else {
+		vscode.window.showWarningMessage(`Pd-Remote: Don't know how to compile '${ext}' files.`);
+	}
 }
 
 // This method is called when your extension is activated
@@ -79,11 +82,11 @@ export function activate(context: vscode.ExtensionContext) {
 		vscode.window.showInputBox({
 			prompt: "Enter the message you want to send through the pdsend process:",
 			placeHolder: "Message..."
-		  }).then(input => {
+		}).then(input => {
 			if (input) {
 				sendPdsendMessage(pdsendPath, input);
 			}
-		  });
+		});
 	});
 
 	context.subscriptions.push(sendMessage);
